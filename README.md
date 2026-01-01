@@ -26,29 +26,6 @@ This project is fully open‑source and non‑commercial.
 
 ---
 
-## 📦 Requirements & Installation
-
-- Discord desktop app required.
-- The plug-in only works with Vencord, make sure **Vencord is properly installed and active.**
-- Node.js (v18+) ; The script bunpro-rpc.js needs **Node.js** to work properly.
-    Download : https://nodejs.org/
-- A Bunpro API Key (You can find yours in the settings of your Bunpro account.)
-- And an Internet connection.
-
-### 1. Install the Vencord plugin  
-Place the plugin file in your Vencord plugins folder.
-
-### 2. Run the RPC script  
-Start the Node.js script to enable Discord Rich Presence.
-
-### 3. Configure your API key  
-In Discord → Vencord → Plugins → Bunpro RPC:
-
-- Enter your **Bunpro API key**
-- (Optional) Enter your **referral link**
-
----
-
 ## 🔑 Bunpro API Key
 
 You can find your API key on Bunpro: **Settings -> Bunpro API**
