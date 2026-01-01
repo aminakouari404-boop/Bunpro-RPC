@@ -22,11 +22,18 @@ This project is fully open‑source and non‑commercial.
 - 👤 Personalized button using your Discord display name
 - 🔗 Optional referral link support
 - 🛠 Easy configuration through Vencord plugin settings
-- 🎨 Bunpro logo displayed in the Rich Presence *(pending permission)*
+- 🎨 Bunpro logo displayed in the Rich Presence
 
 ---
 
-## 📦 Installation
+## 📦 Requirements & Installation
+
+- Discord desktop app required.
+- The plug-in only works with Vencord, make sure **Vencord is properly installed and active.**
+- Node.js (v18+) ; The script bunpro-rpc.js needs **Node.js** to work properly.
+    Download : https://nodejs.org/
+- A Bunpro API Key (You can find yours in the settings of your Bunpro account.)
+- And an Internet connection.
 
 ### 1. Install the Vencord plugin  
 Place the plugin file in your Vencord plugins folder.
@@ -58,9 +65,7 @@ This project uses the **Bunpro logo** as the large image in the Discord Rich Pre
 - This project is **not affiliated**, **endorsed**, or **sponsored** by Bunpro.
 - The logo is used **nominatively**, for identification purposes only.
 - If the Bunpro team requests removal or modification, it will be done immediately.
-
-I have contacted the Bunpro staff (veritaz_nz) to request explicit permission for this usage.  
-Until I receive a response, the logo is included provisionally.
+- The Bunpro logo is used with permission from the Bunpro team.
 
 ---
 

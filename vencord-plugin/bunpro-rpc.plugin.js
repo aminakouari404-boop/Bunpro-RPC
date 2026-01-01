@@ -19,6 +19,7 @@ const settings = definePluginSettings({
         default: "https://bunpro.jp/referrals/user/nkgq3fec",
         description: "Your Bunpro referral link (optional)"
     }
+    
 });
 
 registerPluginSettings("bunpro-rpc", settings);
