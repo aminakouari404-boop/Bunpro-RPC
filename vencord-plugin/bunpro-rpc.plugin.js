@@ -1,6 +1,6 @@
 // =====================================================
-//  BUNPRO RPC — PLUGIN VENCORD
-//  Pages' Detection + Settings + WebSocket
+//  BUNPRO RPC — VENCORD PLUGIN
+//  Page Detection + Settings + WebSocket Client
 // =====================================================
 
 import { definePluginSettings, registerPluginSettings } from "@api/settings";
@@ -19,19 +19,60 @@ const settings = definePluginSettings({
         default: "https://bunpro.jp/referrals/user/nkgq3fec",
         description: "Your Bunpro referral link (optional)"
     }
-    
 });
 
 registerPluginSettings("bunpro-rpc", settings);
 
 // ------------------------------
-// 2. WebSocket to the RPC script
+// 2. WebSocket connection to the RPC script
 // ------------------------------
-const ws = new WebSocket("ws://localhost:8765");
+let ws = null;
+
+function createSocket() {
+    try {
+        ws = new WebSocket("ws://localhost:8765");
+
+        ws.onopen = () => {
+            // Optional: debug log in browser console
+            // console.log("[Bunpro RPC] WebSocket connected");
+        };
+
+        ws.onerror = () => {
+            // Do nothing to avoid spamming Discord's console
+        };
+
+        ws.onclose = () => {
+            // Optional: debug log
+            // console.log("[Bunpro RPC] WebSocket closed, retrying in 3s…");
+            ws = null;
+            // Auto-reconnect after 3 seconds
+            setTimeout(createSocket, 3000);
+        };
+    } catch {
+        // If WebSocket creation fails immediately,
+        // retry later as well.
+        setTimeout(createSocket, 3000);
+    }
+}
+
+createSocket();
 
 // ------------------------------
 // 3. Bunpro page detection
 // ------------------------------
+let lastSentState = "";
+
+// Sends data to the RPC only if the WebSocket is open
+function sendUpdate(pageState) {
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+
+    ws.send(JSON.stringify({
+        page: pageState,
+        apiKey: settings.bunproApiKey,
+        referral: settings.referralLink
+    }));
+}
+
 function detectPage() {
     const url = window.location.pathname + window.location.search;
     let pageState = "browsing";
@@ -63,18 +104,17 @@ function detectPage() {
         pageState = "decks";
     }
 
-    // Sending to the RPC
-    ws.send(JSON.stringify({
-        page: pageState,
-        apiKey: settings.bunproApiKey,
-        referral: settings.referralLink
-    }));
+    // Avoid sending the same state repeatedly
+    if (pageState === lastSentState) return;
+    lastSentState = pageState;
+
+    sendUpdate(pageState);
 }
 
 // Initial detection
 detectPage();
 
-// URL changes' detection
+// Detect URL changes (SPA navigation)
 let lastUrl = location.href;
 setInterval(() => {
     if (location.href !== lastUrl) {
