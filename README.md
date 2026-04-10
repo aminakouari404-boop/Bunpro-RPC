@@ -50,7 +50,7 @@ Otherwise, run:
 npm install
 ```
 
-3. Create the `.env` file at the project root:
+3. Open the `.env` file at the project root. It should appear like that :
 
 ```env
 BUNPRO_FRONTEND_TOKEN=your_bunpro_frontend_token
