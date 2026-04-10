@@ -35,7 +35,7 @@ It also runs a local WebSocket server (`port 8765`) to detect whether Bunpro is 
 1. Clone the repository or download the ZIP file:
 
 ```bash
-git clone https://github.com/<my-user-i-forgor>/bunpro-rpc2.git
+git clone https://github.com/aminakouari404-boop/bunpro-rpc2.git
 cd bunpro-rpc2
 ```
 
