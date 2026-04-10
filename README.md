@@ -33,14 +33,12 @@ It also runs a local WebSocket server (`port 8765`) to detect whether Bunpro is 
 
 ## Installation
 
-1. Clone the repository or download the ZIP file:
+1. Clone the repository or download the ZIP file (source code):
 
 ```bash
 git clone https://github.com/aminakouari404-boop/bunpro-rpc2.git
 cd bunpro-rpc2
 ```
-
-Or download the latest release ZIP from GitHub and extract it.
 
 2. Install dependencies if needed:
 
