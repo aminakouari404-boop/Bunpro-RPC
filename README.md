@@ -20,6 +20,7 @@ It also runs a local WebSocket server (`port 8765`) to detect whether Bunpro is 
 - Displays Bunpro activity in Discord
 - Refreshes the presence every 10 seconds
 - Shows remaining review count or current lesson
+- Uses the Bunpro logo in Discord RPC with permission from Bunpro
 - Adds a referral button to Bunpro (not working at the moment for some reason)
 - Automatically detects the current mode using Bunpro frontend endpoints
 
